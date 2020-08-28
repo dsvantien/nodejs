@@ -1,19 +1,34 @@
 const express = require('express');
 const app = express();
+const bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({ extended: true }));
 app.set('view engine', 'ejs');
 
+var girls = [{ name: 'girl1', image: 'https://images.kienthuc.net.vn/zoomh/800/uploaded/ctvcongdongtre/2019_10_23/3/nu-sinh-bac-ninh-dep-chang-kem-hot-girl-chiem-song-mxh.jpeg' },
+    { name: 'girl2', image: 'https://images.kienthuc.net.vn/zoomh/800/uploaded/ctvcongdongtre/2019_10_23/3/nu-sinh-bac-ninh-dep-chang-kem-hot-girl-chiem-song-mxh.jpeg' },
+    { name: 'girl3', image: 'https://images.kienthuc.net.vn/zoomh/800/uploaded/ctvcongdongtre/2019_10_23/3/nu-sinh-bac-ninh-dep-chang-kem-hot-girl-chiem-song-mxh.jpeg' },
+    { name: 'girl4', image: 'https://images.kienthuc.net.vn/zoomh/800/uploaded/ctvcongdongtre/2019_10_23/3/nu-sinh-bac-ninh-dep-chang-kem-hot-girl-chiem-song-mxh.jpeg' }
+];
+app.get('/news', (req, res) => {
+    res.render('new');
+});
+
+app.post('/girls', (req, res) => {
+    let name = req.body.name;
+    let image = req.body.image;
+    let newGirl = { name: name, image: image };
+    girls.push(newGirl);
+    res.redirect('/girls');
+});
 app.get('/', (req, res) => {
     res.render('landing');
 });
 
 app.get('/girls', function(req, res) {
-    var girls = [{ name: 'girl1', image: 'https://i.pinimg.com/originals/4a/b7/bf/4ab7bf62e5a1fdf4f7759bb3fcf6cf0e.jpg' },
-        { name: 'girl2', image: 'http://images6.fanpop.com/image/photos/42600000/Cute-Girl-simpo1-42645775-736-918.jpg' },
-        { name: 'girl3', image: 'http://images6.fanpop.com/image/photos/42600000/The-Girls-simpo1-42645768-1470-2205.jpg' },
-        { name: 'girl4', image: 'http://images6.fanpop.com/image/photos/42600000/The-Girls-simpo1-42645765-480-640.jpg' }
-    ];
+
     res.render('girls', { girls: girls });
 });
+
 var port = process.env.port || 3000;
 app.listen(port, (err) => {
     if (err) {

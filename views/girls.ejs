@@ -1,8 +1,30 @@
-<% girls.forEach(girl => {%>
-    <div>
-        <h1>
-            <%=girl.name %>
-        </h1>
-        <img src='<%=girl.image%>'></img>
+<%- include('./partials/header') %>
+    <div class='container'>
+
+        <header class='jumbotron'>
+            <div class="container">
+                <h1>Welcome to beautiful girls</h1>
+                <p>this is all beautiful girls you looking for</p>
+                <a href="/news" class='btn btn-info'>add new girl</a>
+            </div>
+        </header>
+        <div class='row text-center' style="display: flex;flex-wrap: wrap;">
+            <% girls.forEach(girl => {%>
+                <div class='col-lg-4 col-6'>
+                    <div class='mx-auto img-fluid img-thumbnail'>
+                        <img src='<%=girl.image%>'></img>
+
+
+                        <div class='capption'>
+
+                            <h3>
+                                <%=girl.name %>
+                            </h3>
+
+                        </div>
+                    </div>
+                </div>
+        </div>
     </div>
     <% }) ;%>
+        <%- include('./partials/footer') %>
