@@ -1,8 +1,37 @@
-.container body {
+/* .container body {
     /* background-image: url("/image/backround.jpg") !important; */
-    background-color: black !important;
+
+
+/* background-color: black !important;
 }
 
 body {
     background-color: black;
+} */
+
+
+/* #content {
+    background-image: url("/image/backround.jpg") !important;
+} */
+
+
+/* #mg {
+    margin: 0px !important;
+} */
+
+.segment {
+    text-align: center;
+    color: black;
+}
+
+@media screen and (max-width:780px) {
+    .container .grid .segment {
+        font-size: 10px;
+    }
+}
+
+@media screen and (max-width:400px) {
+    .container .grid .segment {
+        font-size: 7px;
+    }
 }

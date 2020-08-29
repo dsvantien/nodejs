@@ -1,0 +1,29 @@
+<%- include('./partials/header.ejs');%>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9 ">
+                <div class="ui green inverted segment">Tâm Lý - Kỹ Năng Sống</div>
+                <% allBookItems.forEach(bookitem=> {%>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="card">
+                                <img class="card-img-top" src="<%=bookitem.image%>">
+                            </div>
+                            <div class="card-body">
+                                <h3 class="card-title" style="font-size:13px">
+                                    <%= bookitem.name%>
+                                </h3>
+                            </div>
+                        </div>
+                    </div>
+                    <%});%>
+
+
+            </div>
+            <div class="col-md-3 sidebar">
+                <div class="ui green inverted segment">sidebar</div>
+            </div>
+        </div>
+    </div>
+
+    <%- include('./partials/footer.ejs');%>
