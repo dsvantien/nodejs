@@ -3,6 +3,7 @@ const app = express();
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set('view engine', 'ejs');
+app.use(express.static(__dirname + '/public'));
 
 var girls = [{ name: 'girl1', image: 'https://images.kienthuc.net.vn/zoomh/800/uploaded/ctvcongdongtre/2019_10_23/3/nu-sinh-bac-ninh-dep-chang-kem-hot-girl-chiem-song-mxh.jpeg' },
     { name: 'girl2', image: 'https://images.kienthuc.net.vn/zoomh/800/uploaded/ctvcongdongtre/2019_10_23/3/nu-sinh-bac-ninh-dep-chang-kem-hot-girl-chiem-song-mxh.jpeg' },
@@ -30,10 +31,12 @@ app.get('/girls', function(req, res) {
 });
 
 var port = process.env.port || 3000;
-app.listen(port, (err) => {
+var host = process.env.host || "0.0.0.0"
+app.listen(port, host, (err) => {
     if (err) {
         console.log('something wrong');
     } else {
         console.log('server connected at port ' + port);
+        console.log(host);
     }
 })

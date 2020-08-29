@@ -1,0 +1,8 @@
+.container body {
+    /* background-image: url("/image/backround.jpg") !important; */
+    background-color: black !important;
+}
+
+body {
+    background-color: black;
+}
