@@ -16,8 +16,8 @@ var bookItem = mongoose.model('bookItem', dataSchema);
 //         console.log(book)
 //     })
 // bookItem.create({
-//     name: "Sinh Ra Để Chạy",
-//     image: 'https://bizweb.dktcdn.net/thumb/grande/100/197/269/products/born-to-run-bia-dau.jpg?v=1520912498733'
+//     name: "Mặc Kệ Thiên Hạ - Sống Như Người Nhật",
+//     image: 'https://salt.tikicdn.com/cache/w390/media/catalog/product/b/i/bia-1---mac-ke-thien-ha.u5102.d20170323.t155756.324847.jpg'
 // }, (err, bookItem) => {
 //     if (err) {
 //         console.log('database have not created');
@@ -56,6 +56,16 @@ app.get('/kinangsong', (req, res) => {
             console.log('not find data');
         } else {
             res.render('lifeskills', { allBookItems });
+        }
+    })
+
+})
+app.get('/ebook/:id', (req, res) => {
+    bookItem.findById(req.params.id, (err, bookid) => {
+        if (err) {
+            res.redirect('/kinangsong');
+        } else {
+            res.render('Detail', { bookid });
         }
     })
 
